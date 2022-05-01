@@ -35,21 +35,21 @@ Global = {}
 Noble = {}
 
 -- Third-party libraries
-import 'libraries/noble/libraries/Signal'
-import 'libraries/noble/libraries/Sequence'
+import 'lib/noble/libraries/Signal'
+import 'lib/noble/libraries/Sequence'
 
 -- Noble libraries, modules, and classes.
-import 'libraries/noble/utilities/Utilities'
-import 'libraries/noble/modules/Noble.Animation.lua'
-import 'libraries/noble/modules/Noble.Bonk.lua'
-import 'libraries/noble/modules/Noble.GameData.lua'
-import 'libraries/noble/modules/Noble.Input.lua'
-import 'libraries/noble/modules/Noble.Settings.lua'
-import 'libraries/noble/modules/Noble.Text.lua'
-import 'libraries/noble/modules/Noble.TransitionType.lua'
-import 'libraries/noble/modules/Noble.Menu.lua'
-import 'libraries/noble/modules/NobleScene'
-import 'libraries/noble/modules/NobleSprite'
+import 'lib/noble/utilities/Utilities'
+import 'lib/noble/modules/Noble.Animation.lua'
+import 'lib/noble/modules/Noble.Bonk.lua'
+import 'lib/noble/modules/Noble.GameData.lua'
+import 'lib/noble/modules/Noble.Input.lua'
+import 'lib/noble/modules/Noble.Settings.lua'
+import 'lib/noble/modules/Noble.Text.lua'
+import 'lib/noble/modules/Noble.TransitionType.lua'
+import 'lib/noble/modules/Noble.Menu.lua'
+import 'lib/noble/modules/NobleScene'
+import 'lib/noble/modules/NobleSprite'
 
 --- Check to see if the game is transitioning between scenes.
 -- Useful to control game logic that lives outside of a scene's `update()` method.
@@ -343,6 +343,9 @@ function playdate.update()
 
 	if (currentScene ~= nil) then
 		currentScene:update()			-- Scene-specific update code.
+		if currentScene.draw then
+			currentScene:draw()
+		end
 	end
 
 	if (Noble.isTransitioning) then
